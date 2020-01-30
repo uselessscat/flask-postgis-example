@@ -26,7 +26,7 @@ def configure_app(app: Flask) -> None:
 
 
 def create_app() -> Flask:
-    app = Flask(__name__)
+    app: Flask = Flask(__name__)
 
     configure_app(app)
 
