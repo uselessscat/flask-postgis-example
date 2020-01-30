@@ -1,4 +1,4 @@
-# How to star the proyect
+# How to start the proyect
 
 Run inside the proyect folder
 
@@ -10,3 +10,13 @@ Run inside the proyect folder
 To initialize migrations
 
     flask db init
+
+To detect migrations 
+
+    flask db migrate
+
+To apply migrations
+
+    flask db upgrade
+
+More info about [Flask-Migrate ](https://flask-migrate.readthedocs.io/en/latest/)

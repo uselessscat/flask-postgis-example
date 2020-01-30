@@ -1,3 +1,3 @@
 # ZE CODE CHALLENGE
 
-Got to [instructions](./docs/instructions.md)
+Go to [instructions](./docs/instructions.md)

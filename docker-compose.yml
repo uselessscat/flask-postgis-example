@@ -13,7 +13,7 @@ services:
       - FLASK_ENV=development
       - FLASK_DEBUG=True
       - APP_SETTINGS=app.configs.DevelopmentConfig
-      - DATABASE_URL=postgres://postgres:postgres@db:5432/zedelibery
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/zedelivery
     networks:
       default:
         aliases:
@@ -21,7 +21,9 @@ services:
     depends_on:
       - postgres
   postgres:
-    image: postgres:12
+    build:
+      context: .
+      dockerfile: db.dockerfile
     environment:
       POSTGRES_DB: zedelivery
       POSTGRES_USER: postgres
