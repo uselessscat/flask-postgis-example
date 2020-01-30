@@ -10,7 +10,7 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - FLASK_ENV=development
-      - FLASK_APP=app.py
+      - FLASK_APP=setup.py
     networks:
       default:
         aliases:
