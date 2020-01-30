@@ -1,0 +1,43 @@
+version: "3.7"
+services:
+  python:
+    build:
+      context: .
+    volumes:
+      - ./src:/usr/src/app
+    ports:
+      - 80:5000
+    environment:
+      - PYTHONUNBUFFERED=1
+      - FLASK_ENV=development
+      - FLASK_APP=app.py
+    networks:
+      default:
+        aliases:
+          - api
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:12
+    environment:
+      POSTGRES_DB: zedelivery
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      default:
+        aliases:
+          - db
+  swagger:
+    image: swaggerapi/swagger-ui
+    ports:
+      - 81:8080
+    volumes:
+      - ./docs/swagger:/usr/share/nginx/html/definitions
+    environment:
+      API_URL: definitions/swagger.yml
+networks:
+  default:
