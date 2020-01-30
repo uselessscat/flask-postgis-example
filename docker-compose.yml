@@ -9,8 +9,11 @@ services:
       - 80:5000
     environment:
       - PYTHONUNBUFFERED=1
-      - FLASK_ENV=development
       - FLASK_APP=setup.py
+      - FLASK_ENV=development
+      - FLASK_DEBUG=True
+      - APP_SETTINGS=app.configs.DevelopmentConfig
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/zedelibery
     networks:
       default:
         aliases:
