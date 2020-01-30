@@ -1,4 +1,5 @@
 from flask import Blueprint
+from app.models import Partner
 
 partners_blueprint = Blueprint('partners', __name__, url_prefix='/partners')
 
