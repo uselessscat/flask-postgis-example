@@ -8,5 +8,7 @@ class Partner(db.Model):
     trading_name = db.Column(db.String(200), nullable=False)
     owner_name = db.Column(db.String(200), nullable=False)
     document = db.Column(db.String(100), nullable=False, unique=True)
-    coverage_area = db.Column(Geometry('MULTIPOLYGON'))
-    address = db.Column(Geometry('POINT'))
+
+    # geometry == cartesian
+    coverage_area = db.Column(Geometry(geometry_type='MULTIPOLYGON', srid=4326))
+    address = db.Column(Geometry(geometry_type='POINT', srid=4326))
