@@ -9,7 +9,7 @@ from app import db
 from app.models import Partner
 
 
-class Geo(Field):
+class GeometryField(Field):
     def _deserialize(
             self,
             value: dict = None,
@@ -34,14 +34,14 @@ class Geo(Field):
         return mapping(shape)
 
 
-class PartnerSchema(ModelSchema):
+class PartnerSerializer(ModelSchema):
     class Meta:
         model = Partner
         sqla_session = db
 
-    address = Geo()
-    coverage_area = Geo()
+    address = GeometryField()
+    coverage_area = GeometryField()
 
 
-partner_schema = PartnerSchema()
-partners_schema = PartnerSchema(many=True)
+partner_serializer = PartnerSerializer()
+partners_serializer = PartnerSerializer(many=True)
