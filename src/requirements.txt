@@ -1,8 +1,12 @@
 Flask ~= 1.1
+Flask-Marshmallow ~= 0.10
 Flask-SQLAlchemy ~= 2.4
 Flask-Migrate ~= 2.5
+Marshmallow-SQLAlchemy ~= 0.21
 
 # postgres database adapter
 psycopg2-binary >= 2.8
 
+# geographic libraries
+Shapely ~= 1.7
 GeoAlchemy2 ~= 0.6

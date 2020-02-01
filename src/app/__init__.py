@@ -2,11 +2,12 @@ import os
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
 
 # global db object
 db = SQLAlchemy()
-
+ma = Marshmallow()
 
 def register_blueprints(app: Flask) -> None:
     from app.views.meta import meta_blueprint
@@ -30,8 +31,9 @@ def create_app() -> Flask:
 
     configure_app(app)
 
-    # bind the sqlalchemy object to app
+    # bind the libraries objects to app
     db.init_app(app)
+    ma.init_app(app)
 
     # initialize migration library
     Migrate(app, db)
