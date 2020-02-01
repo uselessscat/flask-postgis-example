@@ -1,7 +1,17 @@
-# dev database data
+### dev database data ###
 pgdata
 
-# Byte-compiled / optimized / DLL files
+### Byte-compiled / optimized / DLL files ###
 __pycache__/
 *.py[cod]
 *$py.class
+
+### Code ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### Venv ###
+src/venv/

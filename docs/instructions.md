@@ -1,8 +1,30 @@
 # How to start the proyect
 
+### Docker
+
 Run inside the proyect folder
 
     docker-compose up
+
+### Venv
+
+Requires python 3
+
+Create venv (proyect folder)
+
+    python3 -m venv src/venv
+
+Activate venv
+
+    . src/venv/bin/activate
+
+Install dependencies
+
+    pip install -r src/requirements.txt
+
+To deactivate venv
+
+    deactivate
 
 
 # Database

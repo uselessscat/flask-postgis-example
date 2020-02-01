@@ -1,0 +1,4 @@
+{
+    // delete if dont want to use venv
+    "python.pythonPath": "src/venv/bin/python"
+}
