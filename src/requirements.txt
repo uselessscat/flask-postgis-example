@@ -1,5 +1,3 @@
-flake8
-
 # web framework
 Flask ~= 1.1
 Flask-Marshmallow ~= 0.10

@@ -1,0 +1,4 @@
+flake8
+pylint
+pylint-flask
+autopep8

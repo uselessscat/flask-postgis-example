@@ -20,7 +20,7 @@ Activate venv
 
 Install dependencies
 
-    pip install -r src/requirements.txt
+    pip install -r src/requirements.txt -r src/requirements.dev.txt
 
 To deactivate venv
 
