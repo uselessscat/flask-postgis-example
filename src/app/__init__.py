@@ -9,6 +9,7 @@ from flask_migrate import Migrate
 db = SQLAlchemy()
 ma = Marshmallow()
 
+
 def register_blueprints(app: Flask) -> None:
     from app.views.meta import meta_blueprint
     app.register_blueprint(meta_blueprint)

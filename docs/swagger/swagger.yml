@@ -1,0 +1,51 @@
+openapi: "3.0.2"
+info:
+  title: Ze Delivery Api
+  version: "1.0"
+servers:
+  - url: localhost:80
+paths:
+  /status:
+    get:
+      responses:
+        "200":
+          description: OK
+  /partners:
+    post:
+      description: Create a partner
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewPartner"
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
+components:
+  schemas:
+    Id:
+      type: object
+      properties:
+        id:
+          type: integer
+    NewPartner:
+      type: object
+      properties:
+        trading_name:
+          type: string
+        owner_name:
+          type: string
+        document:
+          type: string
+        coverage_area:
+          type: object
+        address:
+          type: object
+    Partner:
+      allOf:
+        - $ref: "#/components/schemas/Id"
+        - $ref: "#/components/schemas/NewPartner"

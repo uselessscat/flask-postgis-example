@@ -9,6 +9,8 @@ class Partner(db.Model):
     owner_name = db.Column(db.String(200), nullable=False)
     document = db.Column(db.String(100), nullable=False, unique=True)
 
-    # geometry == cartesian
-    coverage_area = db.Column(Geometry(geometry_type='MULTIPOLYGON', srid=4326))
+    # geometry == cartesian, srid 4326 == WGS 84
+    coverage_area = db.Column(
+        Geometry(geometry_type='MULTIPOLYGON', srid=4326)
+    )
     address = db.Column(Geometry(geometry_type='POINT', srid=4326))
