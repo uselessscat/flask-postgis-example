@@ -4,14 +4,23 @@ info:
   version: "1.0"
 servers:
   - url: http://localhost:80
+tags:
+  - name: Info
+    description: Server & api information
+  - name: Partner
+    description: Everything about partners
 paths:
   /status:
     get:
+      tags:
+        - Info
       responses:
         "200":
           description: OK
   /partners:
     post:
+      tags:
+        - Partner
       description: Create a partner
       requestBody:
         content:
@@ -27,6 +36,8 @@ paths:
                 $ref: "#/components/schemas/Partner"
   /partners/{id}:
     get:
+      tags:
+        - Partner
       description: Get the partner identified by id
       parameters:
         - $ref: "#/components/parameters/Id"
@@ -39,6 +50,8 @@ paths:
                 $ref: "#/components/schemas/Partner"
   /partners/search:
     get:
+      tags:
+        - Partner
       description: Get the nearest partner to specified location
       parameters:
         - $ref: "#/components/parameters/Longitude"
