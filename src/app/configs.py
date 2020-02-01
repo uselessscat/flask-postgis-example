@@ -2,16 +2,16 @@ import os
 
 
 class DefaultConfig:
-    DEBUG = False
+    DEBUG: str = 'False'
 
-    SQLALCHEMY_ECHO = False
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_ECHO: bool = False
+    SQLALCHEMY_DATABASE_URI: str = os.environ.get('DATABASE_URL')
+    SQLALCHEMY_TRACK_MODIFICATIONS: bool = False
 
 
 class DevelopmentConfig(DefaultConfig):
-    DEBUG = os.environ.get('FLASK_DEBUG')
+    DEBUG: str = os.environ.get('FLASK_DEBUG')
 
-    SQLALCHEMY_ECHO = os.environ.get('FLASK_DEBUG') == 'True'
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_ECHO: bool = os.environ.get('FLASK_DEBUG') == 'True'
+    SQLALCHEMY_DATABASE_URI: str = os.environ.get('DATABASE_URL')
+    SQLALCHEMY_TRACK_MODIFICATIONS: bool = False
