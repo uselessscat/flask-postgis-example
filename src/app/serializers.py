@@ -14,8 +14,7 @@ class GeometryField(Field):
     def _deserialize(
             self,
             value: dict = None,
-            attr=None,
-            data=None,
+            *args,
             **kwargs) -> WKBElement:
         shape: Shape = Shape(value)
 

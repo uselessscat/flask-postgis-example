@@ -29,7 +29,6 @@ def create_partner() -> tuple:
     except BadRequest:
         return jsonify({'error': 'Content is not json'}), 422
 
-    # TODO: try https://stackoverflow.com/a/56515229/6658955
     return partner_serializer.dump(partner), 201
 
 

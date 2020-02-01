@@ -1,5 +1,6 @@
 from typing import Iterator
 
+
 def camelcase(s: str) -> str:
     parts: Iterator[str] = iter(s.split('_'))
 
