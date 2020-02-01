@@ -3,7 +3,7 @@ info:
   title: Ze Delivery Api
   version: "1.0"
 servers:
-  - url: localhost:80
+  - url: http://localhost:80
 paths:
   /status:
     get:
@@ -25,7 +25,52 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Partner"
+  /partners/{id}:
+    get:
+      description: Get the partner identified by id
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: The partner with specified id
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
+  /partners/search:
+    get:
+      description: Get the nearest partner to specified location
+      parameters:
+        - $ref: "#/components/parameters/Longitude"
+        - $ref: "#/components/parameters/Lattitude"
+      responses:
+        "200":
+          description: The partner nearest to give coordinate
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
 components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      description: The id of the resource
+      required: true
+      schema:
+        type: integer
+    Longitude:
+      name: lng
+      in: query
+      description: The longitude component of a coordinate
+      schema:
+        type: number
+    Lattitude:
+      name: lat
+      in: query
+      description: The lattitude component of a coordinate
+      schema:
+        type: number
   schemas:
     Id:
       type: object
