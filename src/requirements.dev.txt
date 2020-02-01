@@ -2,3 +2,5 @@ flake8
 pylint
 pylint-flask
 autopep8
+pytest
+coverage

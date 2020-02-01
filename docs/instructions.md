@@ -43,6 +43,12 @@ To apply migrations
 
 More info about [Flask-Migrate ](https://flask-migrate.readthedocs.io/en/latest/)
 
+# Testing
+
+To run tests
+
+    docker exec -it ze_challenge_backend_python_1 pytest
+
 # Lint
 
 To run flake8
