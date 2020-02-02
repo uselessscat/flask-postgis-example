@@ -5,6 +5,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
 
+from app.exception_handlers import register_exception_handlers
+
 # global db object
 db = SQLAlchemy()
 ma = Marshmallow()
@@ -39,6 +41,7 @@ def create_app() -> Flask:
     # initialize migration library
     Migrate(app, db)
 
+    register_exception_handlers(app)
     register_blueprints(app)
 
     return app

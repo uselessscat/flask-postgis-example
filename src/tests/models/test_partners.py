@@ -4,7 +4,6 @@ from app import db
 from app.models import Partner
 from app.serializers import partner_serializer
 
-from tests.conftest import app
 from tests.sample_data import partners as partner_samples
 
 
