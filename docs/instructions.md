@@ -49,6 +49,10 @@ To run tests
 
     docker exec -it ze_challenge_backend_python_1 pytest
 
+Test coverage (using html report)
+
+    docker exec -it ze_challenge_backend_python_1 bash -c 'coverage run -m pytest && coverage html'
+
 # Lint
 
 To run flake8

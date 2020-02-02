@@ -1,17 +1,31 @@
-### dev database data ###
-pgdata
-
-### Byte-compiled / optimized / DLL files ###
+### Python ###
+# Byte-compiled / optimized / DLL files #
 __pycache__/
 *.py[cod]
 *$py.class
 
-### Code ###
+# Venv #
+src/venv/
+
+# Unit test / coverage reports #
+htmlcov/
+.coverage
+.coverage.*
+
+### IDES ###
+# Code #
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
-### Venv ###
-src/venv/
+### Database ###
+# dev database data #
+pgdata
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
