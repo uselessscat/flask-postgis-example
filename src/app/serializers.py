@@ -18,7 +18,7 @@ class GeometryField(Field):
             **kwargs) -> WKBElement:
         shape: Shape = Shape(value)
 
-        return from_shape(shape)
+        return from_shape(shape, srid=4326)
 
     def _serialize(
             self,

@@ -5,23 +5,7 @@ from app.models import Partner
 from app.serializers import partner_serializer
 
 from tests.conftest import app
-
-
-def get_partner_json() -> dict:
-    return {
-        'id': 1,
-        'tradingName': 'Adega da Cerveja - Pinheiros',
-        'ownerName': 'Zé da Silva',
-        'document': '1432132123891/0001',
-        'coverageArea': {
-            'type': 'MultiPolygon',
-            'coordinates': [[[[30, 20], [45, 40], [10, 40], [30, 20]]]]
-        },
-        'address': {
-            'type': 'Point',
-            'coordinates': [30, 20]
-        }
-    }
+from tests.sample_data import partners as partner_samples
 
 
 def test_empty_partners(app: Flask) -> None:
@@ -31,7 +15,21 @@ def test_empty_partners(app: Flask) -> None:
 
 def test_create_partners(app: Flask) -> None:
     with app.app_context():
-        partner_raw: dict = get_partner_json()
+        partner_raw: dict = partner_samples.get_w_geoobjects()
+
+        del partner_raw['id']
+
+        partner = Partner(**partner_raw)
+
+        db.session.add(partner)
+        db.session.commit()
+
+        assert len(Partner.query.all()) == 1
+
+
+def test_create_partners_serializer(app: Flask) -> None:
+    with app.app_context():
+        partner_raw: dict = partner_samples.get_camel()
 
         del partner_raw['id']
 

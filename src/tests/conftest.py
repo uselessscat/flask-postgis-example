@@ -14,10 +14,8 @@ def app():
         # TODO: create test database with geographic modules
         db.create_all()
 
-    yield app
+        yield app
 
-    with app.app_context():
-        # TODO: delete database
         db.drop_all()
 
 
