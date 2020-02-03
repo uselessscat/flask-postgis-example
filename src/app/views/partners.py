@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from flask import Blueprint, request, jsonify
 from werkzeug.exceptions import BadRequest
 
@@ -9,18 +11,20 @@ from app import db
 from app.models import Partner
 from app.serializers import partner_serializer
 
-partners_blueprint = Blueprint('partners', __name__, url_prefix='/partners')
+partners_blueprint: Blueprint = Blueprint(
+    'partners', __name__, url_prefix='/partners'
+)
 
 
 @partners_blueprint.route('/<int:id>', methods=['GET'])
-def get_partner(id: int) -> tuple:
+def get_partner(id: int) -> Tuple[dict, int]:
     partner: Partner = Partner.query.filter_by(id=id).first()
 
     return partner_serializer.dump(partner), 200
 
 
 @partners_blueprint.route('/', methods=['POST'])
-def create_partner() -> tuple:
+def create_partner() -> Tuple[dict, int]:
     try:
         if not request.is_json:
             raise BadRequest
@@ -37,13 +41,13 @@ def create_partner() -> tuple:
 
 
 @partners_blueprint.route('/search', methods=['GET'])
-def search_partner() -> tuple:
-    lng: str = float(request.args.get('lng'))
-    lat: str = float(request.args.get('lat'))
+def search_partner() -> Tuple[dict, int]:
+    lng: float = float(request.args.get('lng'))
+    lat: float = float(request.args.get('lat'))
 
     point = from_shape(Point(lng, lat), srid=4326)
 
-    results = Partner.query \
+    results: Tuple[Partner, float] = Partner.query \
         .add_column(ST_Distance(Partner.address, point).label('dist')) \
         .filter(ST_Contains(Partner.coverage_area, point)) \
         .order_by('dist') \

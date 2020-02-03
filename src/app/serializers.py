@@ -1,3 +1,5 @@
+from typing import Optional
+
 from geoalchemy2.elements import WKBElement
 from geoalchemy2.shape import to_shape, from_shape
 from shapely.geometry import mapping, shape as Shape
@@ -13,7 +15,7 @@ from app.models import Partner
 class GeometryField(Field):
     def _deserialize(
             self,
-            value: dict = None,
+            value: Optional[dict] = None,
             *args,
             **kwargs) -> WKBElement:
         shape: Shape = Shape(value)
@@ -22,7 +24,7 @@ class GeometryField(Field):
 
     def _serialize(
             self,
-            value: WKBElement = None,
+            value: Optional[WKBElement] = None,
             *args,
             **kwargs
     ) -> dict:
@@ -42,7 +44,7 @@ class PartnerSerializer(ModelSchema):
     address = GeometryField()
     coverage_area = GeometryField()
 
-    def on_bind_field(self, field_name: str, field_obj: str) -> None:
+    def on_bind_field(self, field_name: str, field_obj: Field) -> None:
         field_obj.data_key = camelcase(field_obj.data_key or field_name)
 
 
