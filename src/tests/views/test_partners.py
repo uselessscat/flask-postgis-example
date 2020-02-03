@@ -2,7 +2,6 @@ from flask.wrappers import Response
 from flask.testing import FlaskClient
 
 from tests.sample_data import partners as partner_samples
-from app.models import Partner
 
 
 def test_create_error_on_empty(client: FlaskClient):
