@@ -20,7 +20,6 @@ def test_create_error_on_empty(client: FlaskClient):
 def test_create_valid_data(client: FlaskClient):
     sample: dict = partner_samples.get_camel()
 
-    # TODO: fix this
     res: Response = client.post('/partners/', json=sample)
 
     json_res: dict = res.json

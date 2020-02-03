@@ -37,7 +37,7 @@ class GeometryField(Field):
 class PartnerSerializer(ModelSchema):
     class Meta:
         model = Partner
-        sqla_session = db
+        sqla_session = db.session
 
     address = GeometryField()
     coverage_area = GeometryField()
