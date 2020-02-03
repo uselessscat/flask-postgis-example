@@ -1,9 +1,15 @@
 from flask import Blueprint, request, jsonify
 from werkzeug.exceptions import BadRequest
 
+from shapely.geometry import Point
+from geoalchemy2.functions import ST_Contains
+from sqlalchemy import func
+
+from geoalchemy2.shape import from_shape
+
 from app import db
 from app.models import Partner
-from app.serializers import partner_serializer
+from app.serializers import partner_serializer, partners_serializer
 
 partners_blueprint = Blueprint('partners', __name__, url_prefix='/partners')
 
@@ -34,4 +40,12 @@ def create_partner() -> tuple:
 
 @partners_blueprint.route('/search', methods=['GET'])
 def search_partner() -> tuple:
-    return 'search', 200
+    lng: str = float(request.args.get('lng'))
+    lat: str = float(request.args.get('lat'))
+
+    # st_contains(coverage_area, ST_GeometryFromText('POINT(-46.6435804 -23.5545381)', 4326))
+    results = Partner.query.filter(
+        func.ST_Contains(Partner.coverage_area, from_shape(Point(lng, lat), srid=4326))
+    ).all()
+
+    return jsonify(partners_serializer.dump(results)), 200
