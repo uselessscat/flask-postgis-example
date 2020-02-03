@@ -13,6 +13,11 @@ htmlcov/
 .coverage
 .coverage.*
 
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
 ### IDES ###
 # Code #
 .vscode/*

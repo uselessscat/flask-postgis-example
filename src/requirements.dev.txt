@@ -4,3 +4,4 @@ pylint-flask
 autopep8
 pytest
 coverage
+mypy

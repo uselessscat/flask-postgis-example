@@ -58,3 +58,7 @@ Test coverage (using html report)
 To run flake8
 
     docker exec -it ze_challenge_backend_python_1 flake8 app
+
+To run type checking
+
+    docker exec -it ze_challenge_backend_python_1 mypy .
