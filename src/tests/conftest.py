@@ -17,6 +17,7 @@ def app() -> None:
     yield app
 
     with app.app_context():
+        db.session.close()
         db.drop_all()
 
 

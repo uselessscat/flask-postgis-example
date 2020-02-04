@@ -3,6 +3,7 @@ from typing import Tuple
 from flask import Blueprint, request, jsonify
 from werkzeug.exceptions import BadRequest
 
+from sqlalchemy import desc
 from shapely.geometry import Point
 from geoalchemy2.functions import ST_Contains, ST_Distance
 from geoalchemy2.shape import from_shape
@@ -48,9 +49,12 @@ def search_partner() -> Tuple[dict, int]:
     point = from_shape(Point(lng, lat), srid=4326)
 
     results: Tuple[Partner, float] = Partner.query \
-        .add_column(ST_Distance(Partner.address, point).label('dist')) \
+        .add_columns(ST_Distance(Partner.address, point).label('dist')) \
         .filter(ST_Contains(Partner.coverage_area, point)) \
-        .order_by('dist') \
+        .order_by(desc('dist')) \
         .first()
+
+    if results is None:
+        return jsonify({}), 200
 
     return partner_serializer.dump(results[0]), 200

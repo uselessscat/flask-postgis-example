@@ -7,16 +7,16 @@ from app.utils import camelcase
 def get_snake() -> dict:
     return {
         'id': 1,
-        'trading_name': 'Adega da Cerveja - Pinheiros',
-        'owner_name': 'Zé da Silva',
-        'document': '1432132123891/0001',
+        'trading_name': 'Test partner',
+        'owner_name': 'Test owner',
+        'document': '123456789/1234',
         'coverage_area': {
             'type': 'MultiPolygon',
-            'coordinates': [[[[30, 20], [45, 40], [10, 40], [30, 20]]]]
+            'coordinates': [[[[0, 0], [1, 0], [0, 1], [0, 0]]]]
         },
         'address': {
             'type': 'Point',
-            'coordinates': [30, 20]
+            'coordinates': [0.25, 0.25]
         }
     }
 
