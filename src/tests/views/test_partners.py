@@ -93,7 +93,6 @@ def test_search_closest_match_between(app: Flask, client: FlaskClient) -> None:
     assert res_1.json != res_2.json
 
     with app.app_context():
-        # TODO: why fails?
         assert Partner.query.count() == 2
 
     res: Response = client.get(
