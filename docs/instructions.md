@@ -31,19 +31,24 @@ To deactivate venv
 
 To initialize migrations
 
-    flask db init
+    docker exec -it ze_challenge_backend_python_1 flask db init
 
 To detect migrations 
 
-    flask db migrate
+    docker exec -it ze_challenge_backend_python_1 flask db migrate
 
 To apply migrations
 
-    flask db upgrade
+    docker exec -it ze_challenge_backend_python_1 flask db upgrade
 
 More info about [Flask-Migrate ](https://flask-migrate.readthedocs.io/en/latest/)
 
 # Testing
+
+Create a db with something like
+
+    CREATE DATABASE zedelivery_testing;
+    CREATE EXTENSION postgis;
 
 To run tests
 
