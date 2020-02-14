@@ -31,15 +31,15 @@ To deactivate venv
 
 To initialize migrations
 
-    docker exec -it ze_challenge_backend_python_1 flask db init
+    docker exec -it flask-postgis-example_python_1 flask db init
 
 To detect migrations 
 
-    docker exec -it ze_challenge_backend_python_1 flask db migrate
+    docker exec -it flask-postgis-example_python_1 flask db migrate
 
 To apply migrations
 
-    docker exec -it ze_challenge_backend_python_1 flask db upgrade
+    docker exec -it flask-postgis-example_python_1 flask db upgrade
 
 More info about [Flask-Migrate ](https://flask-migrate.readthedocs.io/en/latest/)
 
@@ -47,23 +47,23 @@ More info about [Flask-Migrate ](https://flask-migrate.readthedocs.io/en/latest/
 
 Create a db with something like
 
-    CREATE DATABASE zedelivery_testing;
+    CREATE DATABASE postgis_example_testing;
     CREATE EXTENSION postgis;
 
 To run tests
 
-    docker exec -it ze_challenge_backend_python_1 pytest
+    docker exec -it flask-postgis-example_python_1 pytest
 
 Test coverage (using html report)
 
-    docker exec -it ze_challenge_backend_python_1 bash -c 'coverage run -m pytest && coverage html'
+    docker exec -it flask-postgis-example_python_1 bash -c 'coverage run -m pytest && coverage html'
 
 # Lint
 
 To run flake8
 
-    docker exec -it ze_challenge_backend_python_1 flake8
+    docker exec -it flask-postgis-example_python_1 flake8
 
 To run type checking
 
-    docker exec -it ze_challenge_backend_python_1 mypy
+    docker exec -it flask-postgis-example_python_1 mypy
