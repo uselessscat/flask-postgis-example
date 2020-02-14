@@ -1,3 +1,3 @@
-# ZE CODE CHALLENGE
+# Flask PostGis Example
 
 Go to [instructions](./docs/instructions.md)
