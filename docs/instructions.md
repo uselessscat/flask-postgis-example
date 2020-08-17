@@ -16,7 +16,8 @@ Create venv (proyect folder)
 
 Activate venv
 
-    . src/venv/bin/activate
+    . ./src/venv/bin/activate
+    . ./src/venv/Scripts/activate
 
 Install dependencies
 
