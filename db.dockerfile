@@ -1,11 +1,11 @@
 # Adapted from 
 # https://github.com/appropriate/docker-postgis/tree/master/11-2.5
-FROM postgres:12
+FROM postgres:16
 
 ENV POSTGIS_MAJOR 3
-ENV POSTGIS_VERSION 3.0.0+dfsg-2~exp1.pgdg100+1
+ENV POSTGIS_VERSION 3.4.2+dfsg-1.pgdg120+1
 
-RUN apt update \
+RUN apt-get update \
     && apt-cache showpkg postgresql-$PG_MAJOR-postgis-$POSTGIS_MAJOR \
     && apt-get install -y --no-install-recommends \
         postgresql-$PG_MAJOR-postgis-$POSTGIS_MAJOR=$POSTGIS_VERSION \

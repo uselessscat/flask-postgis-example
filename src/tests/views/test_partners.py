@@ -4,6 +4,7 @@ from flask.testing import FlaskClient
 
 from tests.sample_data import partners as partner_samples
 
+from app import db
 from app.models import Partner
 
 
@@ -33,7 +34,7 @@ def test_create_valid_data(app: Flask, client: FlaskClient) -> None:
     assert json_res == sample
 
     with app.app_context():
-        assert Partner.query.get(1) is not None
+        assert db.session.get(Partner, 1) is not None
 
 
 def test_search_closest(app: Flask, client: FlaskClient) -> None:

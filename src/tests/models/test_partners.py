@@ -32,7 +32,7 @@ def test_create_partners_serializer(app: Flask) -> None:
 
         del partner_raw['id']
 
-        partner = partner_serializer.load(partner_raw)
+        partner = partner_serializer.load(partner_raw, session=db.session)
 
         db.session.add(partner)
         db.session.commit()

@@ -5,7 +5,8 @@ __pycache__/
 *$py.class
 
 # Venv #
-src/venv/
+env/
+.venv/
 
 # Unit test / coverage reports #
 htmlcov/

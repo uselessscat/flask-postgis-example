@@ -21,7 +21,7 @@ def register_blueprints(app: Flask) -> None:
 
 
 def configure_app(app: Flask) -> None:
-    if(os.getenv('APP_SETTINGS') is not None):
+    if (os.getenv('APP_SETTINGS') is not None):
         app.config.from_object(os.getenv('APP_SETTINGS'))
     else:
         from app.configs import DefaultConfig

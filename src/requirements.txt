@@ -1,13 +1,13 @@
 # web framework
-Flask ~= 1.1
-Flask-Marshmallow ~= 0.10
-Flask-SQLAlchemy ~= 2.4
-Flask-Migrate ~= 2.5
-Marshmallow-SQLAlchemy ~= 0.21
+Flask ~= 3.0
+Flask-Marshmallow ~= 1.2
+Flask-SQLAlchemy ~= 3.1
+Flask-Migrate ~= 4.0
+Marshmallow-SQLAlchemy ~= 1.0
 
 # postgres database adapter
-psycopg2-binary >= 2.8
+psycopg2-binary >= 2.9
 
 # geographic libraries
-Shapely ~= 1.7
-GeoAlchemy2 ~= 0.6
+Shapely ~= 2.0
+GeoAlchemy2 ~= 0.15

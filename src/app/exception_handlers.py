@@ -3,7 +3,10 @@ from flask import Flask, jsonify
 from marshmallow.exceptions import ValidationError
 
 
-def build_error(code: int, message: str = '', details: list = []) -> dict:
+def build_error(code: int, message: str = '', details: list = None) -> dict:
+    if details is None:
+        details = []
+
     return {
         'error': {
             'code': code,
